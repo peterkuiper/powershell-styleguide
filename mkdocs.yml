@@ -1,0 +1,29 @@
+
+site_name: PowerShell Style Guide
+theme:
+  name: 'material'
+  palette:
+    scheme: slate
+nav:
+  - Home: index.md
+  - Foundations:
+      - General Principles: 01-foundations/01.01-general-principles/README.md
+      - File Structure: 01-foundations/01.02-file-structure/README.md
+      - Naming Conventions: 01-foundations/01.03-naming-conventions/README.md
+      - Formatting: 01-foundations/01.04-formatting/README.md
+  - Authoring:
+      - Functions: 02-authoring/02.01-functions/README.md
+      - Modules: 02-authoring/02.02-modules/README.md
+      - Documentation: 02-authoring/02.03-documentation/README.md
+      - Versioning: 02-authoring/02.04-versioning/README.md
+  - Runtime:
+      - Error Handling: 03-runtime/03.01-error-handling/README.md
+      - Logging: 03-runtime/03.02-logging/README.md
+      - Best Practices: 03-runtime/03.03-scripting-best-practices/README.md
+      - Security: 03-runtime/03.04-security/README.md
+      - Performance: 03-runtime/03.05-performance/README.md
+  - Supporting:
+      - Testing: 04-supporting/04.01-testing/README.md
+      - Project Structure: 04-supporting/04.02-project-structure/README.md
+      - Diagrams: 04-supporting/04.03-diagrams/README.md
+      - Good vs Bad: 04-supporting/04.04-good-vs-bad/README.md
