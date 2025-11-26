@@ -1,8 +1,8 @@
-# 7. Documentation
+# Documentation
 
 All public functions and scripts MUST be documented.
 
-## 7.1 Comment‑Based Help
+## Comment‑Based Help
 
 Every public function MUST have a comment‑based help block:
 
@@ -29,7 +29,7 @@ function Get-Thing {
 }
 ```
 
-## 7.2 README Files
+## README Files
 
 Each project and module MUST have a `README.md` that:
 

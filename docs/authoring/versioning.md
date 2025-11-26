@@ -1,4 +1,4 @@
-# 8. Versioning
+# Versioning
 
 Modules MUST follow **Semantic Versioning**: `MAJOR.MINOR.PATCH`.
 

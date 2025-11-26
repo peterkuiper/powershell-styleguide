@@ -1,15 +1,16 @@
-# 17. Good vs Bad Examples
+# Good vs Bad Examples
 
 This chapter provides practical examples following the PowerShell Style Guide.
 Every example includes a **Bad** version (anti-pattern) and a **Good** version (recommended pattern).
 
 ---
 
-# 17.0 Formatting & Readability
+## Formatting & Readability
 
-## 17.0.1 Backtick Abuse
+### Backtick Abuse
 
 **Bad**
+
 ```powershell
 Get-ADUser -Filter * `
 -Properties Name,EmailAddress,Department,Title,Manager `
@@ -17,6 +18,7 @@ Get-ADUser -Filter * `
 ```
 
 **Good**
+
 ```powershell
 Get-ADUser -Filter *
            -Properties Name, EmailAddress, Department, Title, Manager
@@ -24,22 +26,25 @@ Get-ADUser -Filter *
 ```
 
 **Better (Splatting)**
+
 ```powershell
 $params = @{
     Filter     = "*"
     Properties = "Name", "EmailAddress", "Department", "Title", "Manager"
     SearchBase = "OU=Users,DC=contoso,DC=com"
 }
+
 Get-ADUser @params
 ```
 
 ---
 
-# 17.1 Naming Conventions
+## Naming Conventions
 
-## 17.1.1 Non-descriptive variables
+### Non-descriptive variables
 
 **Bad**
+
 ```powershell
 $a = "John"
 $b = "Doe"
@@ -47,36 +52,41 @@ $c = "$a $b"
 ```
 
 **Good**
+
 ```powershell
-$FirstName = "John"
-$LastName  = "Doe"
-$FullName  = "$FirstName $LastName"
+$firstName = "John"
+$lastName  = "Doe"
+$fullName  = "$firstName $lastName"
 ```
 
-## 17.1.2 Boolean naming
+### Boolean naming
 
 **Bad**
+
 ```powershell
 $active = $true
 ```
 
 **Good**
+
 ```powershell
 $IsActive = $true
 ```
 
 ---
 
-# 17.2 Aliases & Positional Parameters
+## Aliases & Positional Parameters
 
-## 17.2.1 Alias overuse
+### Alias overuse
 
 **Bad**
+
 ```powershell
 gci env: | ? name -match "PATH" | % value
 ```
 
 **Good**
+
 ```powershell
 Get-ChildItem env: |
     Where-Object Name -match "PATH" |
@@ -85,39 +95,44 @@ Get-ChildItem env: |
 
 ---
 
-# 17.3 String Handling
+# String Handling
 
-## 17.3.1 Use single quotes for literals
+##  Use single quotes for literals
 
 **Bad**
+
 ```powershell
 Write-Output "C:\Temp\Logs"
 ```
 
 **Good**
+
 ```powershell
 Write-Output 'C:\Temp\Logs'
 ```
 
-## 17.3.2 Avoid unnecessary subexpressions
+## Avoid unnecessary subexpressions
 
 **Bad**
+
 ```powershell
 "Count: $($items.Count)"
 ```
 
 **Good**
+
 ```powershell
 "Count: $itemsCount"
 ```
 
 ---
 
-# 17.4 Error Handling
+# Error Handling
 
-## 17.4.1 Avoid using `$?`
+## Avoid using `$?`
 
 **Bad**
+
 ```powershell
 Get-Content -Path $File
 if (!$?) {
@@ -126,6 +141,7 @@ if (!$?) {
 ```
 
 **Good**
+
 ```powershell
 try {
     Get-Content -Path $File -ErrorAction Stop
@@ -134,14 +150,16 @@ try {
 }
 ```
 
-## 17.4.2 Catch specific exception types
+## Catch specific exception types
 
 **Bad**
+
 ```powershell
 try { 1/0 } catch { Write-Error "Fail" }
 ```
 
 **Good**
+
 ```powershell
 try { 1/0 }
 catch [System.DivideByZeroException] {
@@ -151,11 +169,12 @@ catch [System.DivideByZeroException] {
 
 ---
 
-# 17.5 Splatting
+# Splatting
 
-## 17.5.1 Avoid dynamic keys unless needed
+## Avoid dynamic keys unless needed
 
 **Bad**
+
 ```powershell
 $key = "Path"
 $params = @{ $key = "C:\Temp" }
@@ -163,6 +182,7 @@ Copy-Item @params
 ```
 
 **Good**
+
 ```powershell
 $params = @{
     Path = "C:\Temp"
@@ -170,15 +190,17 @@ $params = @{
 Copy-Item @params
 ```
 
-## 17.5.2 Avoid uppercase/mixed-case parameter keys
+## Avoid uppercase/mixed-case parameter keys
 
 **Bad**
+
 ```powershell
 $params = @{ PATH = "C:\Temp" }
 Copy-Item @params
 ```
 
 **Good**
+
 ```powershell
 $params = @{ Path = "C:\Temp" }
 Copy-Item @params
@@ -186,23 +208,26 @@ Copy-Item @params
 
 ---
 
-# 17.6 Pipeline Usage
+# Pipeline Usage
 
-## 17.6.1 Avoid useless pipelines
+## Avoid useless pipelines
 
 **Bad**
+
 ```powershell
 "Done" | Write-Output
 ```
 
 **Good**
+
 ```powershell
 Write-Output "Done"
 ```
 
-## 17.6.2 Avoid manual loops when pipeline is better
+## Avoid manual loops when pipeline is better
 
 **Bad**
+
 ```powershell
 $services = Get-Service
 foreach ($s in $services) {
@@ -211,6 +236,7 @@ foreach ($s in $services) {
 ```
 
 **Good**
+
 ```powershell
 Get-Service |
     Where-Object Status -eq 'Running' |
@@ -219,39 +245,44 @@ Get-Service |
 
 ---
 
-# 17.7 Verbose, Warning, Debug
+# Verbose, Warning, Debug
 
-## 17.7.1 User-impacting warnings
+## User-impacting warnings
 
 **Bad**
+
 ```powershell
 Write-Host "User does not exist"
 ```
 
 **Good**
+
 ```powershell
 Write-Warning "User does not exist: $UserName"
 ```
 
-## 17.7.2 Debug for developer-only output
+## Debug for developer-only output
 
 **Bad**
+
 ```powershell
 Write-Host "Connecting to $server"
 ```
 
 **Good**
+
 ```powershell
 Write-Debug "Connecting to $server"
 ```
 
 ---
 
-# 17.8 Advanced Functions
+# Advanced Functions
 
-## 17.8.1 Use SupportsShouldProcess
+## Use SupportsShouldProcess
 
 **Bad**
+
 ```powershell
 function Remove-Thing {
     param([string]$Path)
@@ -260,6 +291,7 @@ function Remove-Thing {
 ```
 
 **Good**
+
 ```powershell
 function Remove-Thing {
     [CmdletBinding(SupportsShouldProcess)]
@@ -271,15 +303,17 @@ function Remove-Thing {
 }
 ```
 
-## 17.8.2 Validate input early
+## Validate input early
 
 **Bad**
+
 ```powershell
 param($Path)
 Get-ChildItem -Path $Path
 ```
 
 **Good**
+
 ```powershell
 param(
     [Parameter(Mandatory)]
@@ -292,41 +326,46 @@ Get-ChildItem -Path $Path
 
 ---
 
-# 17.9 Modules
+# Modules
 
-## 17.9.1 Avoid executable code in module scope
+## Avoid executable code in module scope
 
 **Bad**
+
 ```powershell
 # MyModule.psm1
 Write-Host "Loaded!"
 ```
 
 **Good**
+
 ```powershell
 # MyModule.psm1
 # (No executable code)
 ```
 
-## 17.9.2 Export only public commands
+## Export only public commands
 
 **Bad**
+
 ```powershell
 Export-ModuleMember -Function *
 ```
 
 **Good**
+
 ```powershell
 Export-ModuleMember -Function Get-Thing, Set-Thing
 ```
 
 ---
 
-# 17.10 Performance
+# Performance
 
-## 17.10.1 Avoid expensive calls inside loops
+## Avoid expensive calls inside loops
 
 **Bad**
+
 ```powershell
 foreach ($user in $users) {
     Get-ADUser -Identity $user
@@ -334,57 +373,65 @@ foreach ($user in $users) {
 ```
 
 **Good**
+
 ```powershell
 Get-ADUser -Identity $users
 ```
 
-## 17.10.2 Use built-in constants instead of counting large arrays
+## Use built-in constants instead of counting large arrays
 
 **Bad**
+
 ```powershell
 (1..1MB).Count
 ```
 
 **Good**
+
 ```powershell
 1MB
 ```
 
 ---
 
-# 17.11 Security
+# Security
 
-## 17.11.1 Do not print secrets
+## Do not print secrets
 
 **Bad**
+
 ```powershell
 Write-Host "Password: $Password"
 ```
 
 **Good**
+
 ```powershell
 Write-Verbose "Password received"
 ```
 
-## 17.11.2 Avoid basic authentication if possible
+## Avoid basic authentication if possible
 
 **Bad**
+
 ```powershell
 Invoke-RestMethod -Headers @{ Authorization = "Basic $Token" }
 ```
 
 **Good**
+
 ```powershell
 Invoke-RestMethod -Authentication OAuth -Token $OAuthToken
 ```
 
 ---
 
-# 17.12 Testing
+# Testing
 
-## 17.12.1 Test parameter validation explicitly
+## Test parameter validation explicitly
 
 **Bad**
+
 ```powershell
 It "handles failures" {
     Get-Thing | Should -Throw
@@ -392,6 +439,7 @@ It "handles failures" {
 ```
 
 **Good**
+
 ```powershell
 It "throws on empty name" {
     { Get-Thing -Name "" } |
@@ -399,14 +447,16 @@ It "throws on empty name" {
 }
 ```
 
-## 17.12.2 Only mock external dependencies
+## Only mock external dependencies
 
 **Bad**
+
 ```powershell
 Mock Get-Date { "fake" }
 ```
 
 **Good**
+
 ```powershell
 Mock Invoke-RestMethod { @{ Status = "OK" } }
 ```

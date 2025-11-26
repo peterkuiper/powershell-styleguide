@@ -1,8 +1,8 @@
-# 13. Performance
+# Performance
 
 Performance MUST NOT be sacrificed for premature micro‑optimizations, but obvious inefficiencies are disallowed.
 
-## 13.1 Collection Handling
+## Collection Handling
 
 - MUST NOT use `+=` on large arrays in loops.
 - Use pipelines or strongly‑typed lists instead.
@@ -13,7 +13,7 @@ $result = foreach ($item in $items) {
 }
 ```
 
-## 13.2 Filtering
+## Filtering
 
 - Filter as early as possible in the pipeline.
 - Avoid unnecessary data retrieval when you only need a subset.

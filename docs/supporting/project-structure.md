@@ -1,4 +1,4 @@
-# 15. Project Structure
+# Project Structure
 
 Projects MUST follow a consistent high‑level layout to simplify onboarding.
 

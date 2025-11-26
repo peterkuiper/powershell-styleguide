@@ -1,8 +1,8 @@
-# 9. Error Handling
+# Error Handling
 
 Error handling MUST be explicit and predictable.
 
-## 9.1 Terminating vs Non‑Terminating
+## Terminating vs Non‑Terminating
 
 - All critical operations MUST use `-ErrorAction Stop`.
 - `try`/`catch` MUST be used for recoverable errors.
@@ -15,7 +15,7 @@ try {
 }
 ```
 
-## 9.2 Avoid Swallowing Errors
+## Avoid Swallowing Errors
 
 `catch` blocks MUST NOT be empty and MUST NOT silently ignore failures.
 

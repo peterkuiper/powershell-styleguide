@@ -1,8 +1,8 @@
-# 5. Functions
+# Functions
 
 Functions are the primary unit of reusable logic. All non‑trivial behavior MUST be implemented as **advanced functions**.
 
-## 5.1 Advanced Functions
+## Advanced Functions
 
 All public functions MUST:
 
@@ -27,7 +27,7 @@ function Get-Example {
 }
 ```
 
-## 5.2 Parameters and Validation
+## Parameters and Validation
 
 Parameters MUST:
 
@@ -35,7 +35,7 @@ Parameters MUST:
 - Use `[ValidateNotNullOrEmpty()]` where empty input is invalid.
 - Use `[ValidateSet()]` for small enumeration‑like inputs.
 
-## 5.3 Pipeline Lifecycle
+## Pipeline Lifecycle
 
 When accepting pipeline input:
 

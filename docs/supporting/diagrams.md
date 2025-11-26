@@ -1,8 +1,8 @@
-# 16. Diagrams
+# Diagrams
 
 Diagrams MUST be stored as **text‑based sources** (ASCII or Mermaid) whenever possible.
 
-## 16.1 Mermaid Diagrams
+## Mermaid Diagrams
 
 Use Mermaid syntax for flows and relationships:
 

@@ -1,29 +1,92 @@
-
+---
 site_name: PowerShell Style Guide
+
 theme:
-  name: 'material'
+  name: material
   palette:
-    scheme: slate
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      default: true
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  features:
+    # Navigation Enhancements
+    - navigation.instant
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+
+    # Page Enhancements
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+
+    # Search Enhancements
+    - search.suggest
+    - search.highlight
+    - search.share
+
+    # UX Enhancements
+    - toc.follow
+    - announce.dismiss
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - def_list
+  - attr_list
+  - md_in_html
+
+  # Enhanced code blocks + Mermaid support
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  - pymdownx.highlight
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
 nav:
   - Home: index.md
   - Foundations:
-      - General Principles: 01-foundations/01.01-general-principles/README.md
-      - File Structure: 01-foundations/01.02-file-structure/README.md
-      - Naming Conventions: 01-foundations/01.03-naming-conventions/README.md
-      - Formatting: 01-foundations/01.04-formatting/README.md
+      - General Principles: foundations/general-principles.md
+      - File Structure: foundations/file-structure.md
+      - Naming Conventions: foundations/naming-conventions.md
+      - Formatting: foundations/formatting.md
   - Authoring:
-      - Functions: 02-authoring/02.01-functions/README.md
-      - Modules: 02-authoring/02.02-modules/README.md
-      - Documentation: 02-authoring/02.03-documentation/README.md
-      - Versioning: 02-authoring/02.04-versioning/README.md
+      - Functions: authoring/functions.md
+      - Modules: authoring/modules.md
+      - Documentation: authoring/documentation.md
+      - Versioning: authoring/versioning.md
+      - Azure CLI Usage: authoring/azure-cli-usage.md
   - Runtime:
-      - Error Handling: 03-runtime/03.01-error-handling/README.md
-      - Logging: 03-runtime/03.02-logging/README.md
-      - Best Practices: 03-runtime/03.03-scripting-best-practices/README.md
-      - Security: 03-runtime/03.04-security/README.md
-      - Performance: 03-runtime/03.05-performance/README.md
+      - Error Handling: runtime/error-handling.md
+      - Logging: runtime/logging.md
+      - Best Practices: runtime/best-practices.md
+      - Security: runtime/security.md
+      - Performance: runtime/performance.md
   - Supporting:
-      - Testing: 04-supporting/04.01-testing/README.md
-      - Project Structure: 04-supporting/04.02-project-structure/README.md
-      - Diagrams: 04-supporting/04.03-diagrams/README.md
-      - Good vs Bad: 04-supporting/04.04-good-vs-bad/README.md
+      - Testing: supporting/testing.md
+      - Project Structure: supporting/project-structure.md
+      - Diagrams: supporting/diagrams.md
+      - Good vs Bad: supporting/good-vs-bad.md

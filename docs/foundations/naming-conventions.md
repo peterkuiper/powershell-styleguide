@@ -1,8 +1,8 @@
-# 3. Naming Conventions
+# Naming Conventions
 
 Naming MUST be predictable and follow strict patterns.
 
-## 3.1 Cmdlets and Functions
+## Cmdlets and Functions
 
 - MUST use `Verb-Noun` format.
 - Verb MUST be from the **approved PowerShell verb list**.
@@ -22,12 +22,12 @@ function Get-User { }
 function Get-DirectoryItem { }
 ```
 
-## 3.2 Variables
+## Variables
 
 - MUST use **camelCase** (`$userName`, `$logPath`).
 - MUST be descriptive; single letters are only allowed for:
-  - Loop counters: `$i`, `$j`
-  - Very small scopes (e.g. short script blocks)
+    - Loop counters: `$i`, `$j`
+    - Very small scopes (e.g. short script blocks)
 
 **Non‑compliant:**
 
@@ -42,13 +42,13 @@ $logPath   = $Path
 $logLines  = Get-Content -Path $logPath
 ```
 
-## 3.3 Parameters
+## Parameters
 
 - MUST use **PascalCase** (`-UserName`, `-LogPath`).
 - MUST use common names where possible: `-Path`, `-Name`, `-Id`, `-Credential`.
 - MUST avoid abbreviations unless widely recognized (`Id`, `Url`, `Api`).
 
-## 3.4 Files and Modules
+## Files and Modules
 
 - Module folders MUST match module name exactly (case‑insensitive).
 - Script names MUST be verbs or short phrases describing their purpose:

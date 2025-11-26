@@ -1,8 +1,8 @@
-# 4. Formatting
+# Formatting
 
 Formatting rules are **strict** and MUST be followed.
 
-## 4.1 Indentation
+## Indentation
 
 - MUST use **4 spaces** per indentation level.
 - Tabs are NOT allowed.
@@ -13,13 +13,13 @@ if ($condition) {
 }
 ```
 
-## 4.2 Spacing
+## Spacing
 
 - One space around operators: `=`, `-eq`, `+`, `-`, etc.
 - One space after commas.
 - One space between keywords and parentheses: `if ($x)` NOT `if($x)`.
 
-## 4.3 Braces
+## Braces
 
 - Opening brace on the **same line**.
 - Closing brace on its own line aligned with the start of the construct.
@@ -32,15 +32,15 @@ function Get-Example {
 }
 ```
 
-## 4.4 Line Length
+## Line Length
 
 - Maximum line length: **120 characters**.
 - When exceeding 120 characters, code MUST be wrapped using:
-  - Pipeline line breaks
-  - Parameter wrapping
-  - Splatting
+    - Pipeline line breaks
+    - Parameter wrapping
+    - Splatting
 
-## 4.5 Pipeline Formatting
+## Pipeline Formatting
 
 Pipelines MUST be written one stage per line when longer than a simple expression.
 

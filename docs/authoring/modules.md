@@ -1,8 +1,8 @@
-# 6. Modules
+# Modules
 
 Modules encapsulate reusable logic. All shared production code MUST live in modules.
 
-## 6.1 Public vs Private
+## Public vs Private
 
 - Public functions MUST live in `Public/`.
 - Private helpers MUST live in `Private/`.
@@ -18,7 +18,7 @@ MyModule/
     └── Convert-Thing.ps1
 ```
 
-## 6.2 Manifest
+## Manifest
 
 The module manifest (`.psd1`) MUST:
 
@@ -26,7 +26,7 @@ The module manifest (`.psd1`) MUST:
 - Declare `FunctionsToExport` explicitly.
 - Use semantic versioning.
 
-## 6.3 Side Effects
+## Side Effects
 
 - Modules MUST NOT perform heavy work at import time.
 - Initialization logic SHOULD be behind an explicit function (e.g. `Initialize-MyModule`).

@@ -1,8 +1,8 @@
-# 14. Testing
+# Testing
 
 All non‑trivial modules MUST have automated tests.
 
-## 14.1 Pester
+## Pester
 
 - Use **Pester** for unit and integration tests.
 - Tests MUST live in a dedicated `tests/` folder.
