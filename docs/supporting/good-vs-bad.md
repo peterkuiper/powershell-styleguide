@@ -70,7 +70,7 @@ $active = $true
 **Good**
 
 ```powershell
-$IsActive = $true
+$isActive = $true
 ```
 
 ---

@@ -2,6 +2,16 @@
 
 Functions are the primary unit of reusable logic. All non‑trivial behavior MUST be implemented as **advanced functions**.
 
+Avoid using the `return` keyword in your functions. Just place the object variable on its own.
+
+When declaring simple functions leave a space between the function name and the parameters.
+
+```PowerShell
+function MyFunction ($param1, $param2) {
+    ...
+}
+```
+
 ## Advanced Functions
 
 All public functions MUST:
@@ -34,6 +44,16 @@ Parameters MUST:
 - Use appropriate .NET types (`[string]`, `[int]`, `[datetime]`, etc.).
 - Use `[ValidateNotNullOrEmpty()]` where empty input is invalid.
 - Use `[ValidateSet()]` for small enumeration‑like inputs.
+- Use any of the available validation inputs, where appropriate:
+    - AllowNull
+    - AllowEmptyString
+    - AllowEmptyCollection
+    - ValidateCount
+    - ValidateLength
+    - ValidatePattern
+    - ValidateRange
+    - ValidateScript
+    - ValidateNotNull
 
 ## Pipeline Lifecycle
 
@@ -53,6 +73,7 @@ function Get-ProcessedItem {
     begin {
         $count = 0
     }
+
     process {
         $count++
         [PSCustomObject]@{
@@ -60,6 +81,7 @@ function Get-ProcessedItem {
             Status = "Processed"
         }
     }
+
     end {
         Write-Verbose "Processed $count items."
     }

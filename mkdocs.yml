@@ -1,5 +1,5 @@
 ---
-site_name: PowerShell Style Guide
+site_name: PowerShell Styleguide
 
 theme:
   name: material
@@ -54,17 +54,6 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-
-  - pymdownx.highlight
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.details
-  - pymdownx.critic
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.keys
-  - pymdownx.tasklist:
-      custom_checkbox: true
 
 nav:
   - Home: index.md

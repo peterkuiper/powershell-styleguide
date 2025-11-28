@@ -2,6 +2,8 @@
 
 Naming MUST be predictable and follow strict patterns.
 
+In general, prefer the use of full explicit names for commands and parameters rather than aliases or short forms. There are tools like [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer)'s `Invoke-Formatter` and scripts like [Expand-Alias](https://github.com/PoshCode/ModuleBuilder/blob/master/PotentialContribution/ResolveAlias.psm1) for fixing many, but not all of these issues.
+
 ## Cmdlets and Functions
 
 - MUST use `Verb-Noun` format.
